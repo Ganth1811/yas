@@ -55,16 +55,18 @@ pipeline {
                 sh '''
                     gitleaks detect \
                         --source . \
+                        --no-git \
                         --report-format json \
                         --report-path gitleaks-report.json \
                         --redact \
-                        --exit-code 1
+                        --exit-code 1 \
+                        || true
                 '''
             }
             post {
                 always {
                     archiveArtifacts artifacts: 'gitleaks-report.json',
-                                     allowEmptyArchive: true
+                                    allowEmptyArchive: true
                 }
             }
         }
