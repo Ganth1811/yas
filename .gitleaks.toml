@@ -1,0 +1,11 @@
+[extend]
+useDefault = true
+
+[[rules.allowlist]]
+description = "Allow dev placeholder credentials"
+paths = [
+    '''docker-compose.*\.yml''',
+    '''application.*\.properties''',
+    '''application.*\.yml''',
+    '''.env.*'''
+]
